@@ -1,0 +1,47 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <p>
+        Привет из джанги)
+    </p>
+
+    <div>
+        <ul>
+            {% for product in products %}
+                <li>
+                    {{ product.name }} _ (цена: {{product.price}} $)
+                    <div>
+                        <ul>
+                            {% for review in product.reviews.all %}
+                                <li>
+                                    {{ review.user_rating }} _ ({{review.date.date}})
+                                </li>
+                            {% endfor%}
+                        </ul>
+                    </div>
+                </li>
+            {% endfor%}
+        </ul>
+
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    {{ review.user_rating }} _ ({{review.date.date}})
+                </li>
+            {% endfor%}
+        </ul>
+    </div>
+
+</body>
+</html>
+
