@@ -1,12 +1,12 @@
 
 
 from django.shortcuts import render
-from .models import Product
+from .models import Products
 
 
 def index(request):
 
-    products = Product.objects.all()
+    products = Products.objects.all()
 
     print(f'10 {products}')
 

@@ -4,7 +4,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator
 
 
-class Product(models.Model):
+class Products(models.Model):
     name = models.CharField(max_length=30)
     price = models.FloatField()
     old_price = models.FloatField()
@@ -39,9 +39,8 @@ class Reviews(models.Model):
 
 
 class Similar(models.Model):
-    product = models.ForeignKey('Products', on_delete=models.DO_NOTHING, related_name='product', default=1)
-    sim_product = models.ForeignKey('Products', on_delete=models.DO_NOTHING, related_name='sim_product', default=1)
-
+    product = models.ForeignKey('Products', on_delete=models.DO_NOTHING, related_name='product_original', default=1)
+    sim_product = models.ForeignKey('Products', on_delete=models.DO_NOTHING, related_name='product_similar', default=1)
 
 
 # class Product(models.Model):
